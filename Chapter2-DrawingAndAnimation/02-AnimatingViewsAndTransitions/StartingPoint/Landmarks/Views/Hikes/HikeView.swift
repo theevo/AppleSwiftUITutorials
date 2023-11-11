@@ -32,7 +32,12 @@ struct HikeView: View {
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
+                    // rotationEffect feeds rotational inertia into the bouncy animation, so the bounce is rotational.
+                    // uncomment the nil animation to stop the rotational inertia. the bouncy will only bounce on the Z axis
+//                        .animation(nil, value: showDetail)
+                        .scaleEffect(showDetail ?  1.5 : 1 )
                         .padding()
+                        .animation(.bouncy(extraBounce: 0.6), value: showDetail)
                 }
             }
 
